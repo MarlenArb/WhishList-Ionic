@@ -37,14 +37,15 @@ export class Tab1Page {
           return;
         }
 
-        this.wishService.createList(data.titulo);
+        const listId = this.wishService.createList(data.titulo);
+        this.router.navigateByUrl(`/tabs/tab1/add/${listId}`);
         
       }
     }]
     });
 
     alert.present();
-   // this.router.navigateByUrl("/tabs/tab1/add");
   }
+
 
 }

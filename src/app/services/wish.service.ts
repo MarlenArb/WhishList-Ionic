@@ -17,6 +17,7 @@ export class WishService {
     const newList = new List(title);
     this.lists.push(newList);
     this.saveStorage();
+    return newList.id;
    }
 
    saveStorage(){
@@ -30,5 +31,15 @@ export class WishService {
      }else{
        this.lists = [];
      }
+   }
+
+   getList(id: string | number){
+    id = Number(id);
+    return this.lists.find( listData =>  listData.id === id);
+   }
+
+   removeList(list: List){
+    this.lists = this.lists.filter((listData : List) => listData.id != list.id);
+    this.saveStorage();
    }
 }
